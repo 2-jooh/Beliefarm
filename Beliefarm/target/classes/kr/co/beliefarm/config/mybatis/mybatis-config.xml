@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="kr.co.beliefarm.dao.handler.ProjectStatementTypeHandler"
+				alias="ProjectStatementTypeHandler" />
+		<typeAlias type="kr.co.beliefarm.dao.handler.RewardStatementTypeHandler"
+				alias="RewardStatementTypeHandler" />
+		<package name="kr.co.beliefarm.vo"/>		
+	</typeAliases>
+	
+	
+	<typeHandlers>
+		<typeHandler javaType="ProjectStatement" jdbcType="CHAR"
+			handler="ProjectStatementTypeHandler" />
+		<typeHandler javaType="RewardStatement" jdbcType="CHAR"
+			handler="RewardStatementTypeHandler" />
+	
+	</typeHandlers>
+	
+	
+	<mappers>
+		<mapper resource="kr/co/beliefarm/config/mapper/userMapper.xml"/>
+		<mapper resource="kr/co/beliefarm/config/mapper/projectMapper.xml"/>
+		<mapper resource="kr/co/beliefarm/config/mapper/farmerMapper.xml"/>
+		<mapper resource="kr/co/beliefarm/config/mapper/diaryMapper.xml"/>
+		<mapper resource="kr/co/beliefarm/config/mapper/supportProjectMapper.xml"/>
+		<mapper resource="kr/co/beliefarm/config/mapper/rewardMapper.xml"/>
+		<mapper resource="kr/co/beliefarm/config/mapper/dayValueMapper.xml"/>
+	</mappers>
+</configuration>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.beliefarm.config.mapper.diaryMapper">
+
+	<select id="selectDiariesByPrjId" parameterType="_int" resultType="diary">
+		SELECT 		id id, 
+					image image, 
+					contents contents, 
+					registDate registDate, 
+					prjId projectId
+		FROM 		DIARY
+		WHERE		prjId = #{value}	
+	</select>
+
+
+</mapper>

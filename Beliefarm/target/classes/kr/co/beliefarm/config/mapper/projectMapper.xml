@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.beliefarm.config.mapper.projectMapper">
+
+	<resultMap id="project-resultmap" type="project">
+		<id column="id" property="id" />
+		<result column="title" property="title"/>
+		<result column="image" property="image"/>
+		<result column="simpleInfo" property="simpleInfo"/>
+		<result column="startDate" property="startDate"/>
+		<result column="endDate" property="endDate"/>
+		<result column="rest" property="rest"/>
+		<result column="goal" property="goal"/>
+		<result column="bank" property="bank"/>	
+		<result column="account" property="account"/>
+		<result column="acntHolder" property="acntHolder"/>
+		<result column="story" property="story"/>
+		<result column="prjStatement" property="prjStatement" typeHandler="ProjectStatementTypeHandler"/>
+		<result column="QR" property="QR"/>
+		<result column="fineTemp" property="fineTemp"/>
+		<result column="fineHumid" property="fineHumid"/>	
+		<result column="farmerId" property="farmerId"/>
+	</resultMap>
+	<resultMap id="project-farmer-resultMap" type="project" extends="project-resultmap">
+		<association property="farmer" javaType="kr.co.beliefarm.vo.Farmer">
+				<result column="id" property="id"/>	
+				<result column="farmName" property="farmName"/>	
+				<result column="introduce" property="introduce"/>	
+				<result column="farmAddress" property="farmAddress"/>	
+				<result column="userId" property="userId"/>	
+				<result column="crop" property="crop"/>
+		</association>
+	</resultMap>
+	<select id="selectProjectById" parameterType="_int" resultMap="project-farmer-resultMap">
+		SELECT 		p.id, p.title, p.image, p.simpleInfo, p.startDate, p.endDate, p.rest, p.goal, p.bank,
+						  p.account, p.acntHolder, p.story, p.prjStatement, p.qr, p.fineTemp, p.fineHumid, p.farmerId,
+					f.id, f.farmName, f.introduce, f.farmAddress, f.crop, f.userId
+		FROM 		project p, farmer f
+		WHERE		p.farmerId = f.id 
+		AND			p.id = #{value}	
+	</select>
+	
+	<select id="selectAllProjects" resultMap="project-resultmap">
+		SELECT 		id, title, image, simpleInfo, startDate, endDate, rest, goal, bank,
+					account, acntHolder, story, prjStatement, qr, fineTemp, fineHumid, farmerId
+		FROM 		project
+	</select>
+
+</mapper>
