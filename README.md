@@ -1,6 +1,6 @@
-## Beliefarm
+# Beliefarm
 
-2017 fall Media Project
+2017 fall Media Project (17. 09 ~ 17. 11)
 
 ### 개요
 - IoT 센서를 이용한 농산물 크라우드 펀딩 웹 어플리케이션 
